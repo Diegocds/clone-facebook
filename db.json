@@ -1,0 +1,19 @@
+{
+  "users": [
+    {
+      "name": "Diego",
+      "email": "diego@angis.com.br",
+      "date": "1990-02-19",
+      "password": "123",
+      "id": 1
+    },
+    {
+      "name": "Amanda",
+      "email": "amanda@angis.com.br",
+      "date": "1998-10-05",
+      "password": "123",
+      "id": 2
+    }
+  ],
+  "posts": []
+}
