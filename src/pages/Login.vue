@@ -1,7 +1,13 @@
 <template>
   <div class="container">
+    <ModalCadastro
+      :playButton="playButton"
+      :hideModal="hideModal"
+      :modal="modal"
+    />
     <div class="container__logo">
       <img
+        class="container__logo__img"
         src="https://static.xx.fbcdn.net/rsrc.php/y8/r/dF5SId3UHWd.svg"
         alt=""
       />
@@ -37,36 +43,55 @@
         </div>
       </div>
     </div>
-    <div class="container__form">
-      <form @submit="submit">
-        <div class="container__form__input">
-          <input type="email" placeholder="Email ou telefone" v-model="email" />
-        </div>
-        <div class="container__form__input">
-          <input type="password" placeholder="Senha" v-model="password" />
-        </div>
-        <div class="container__form__button">
-          <button>Entrar</button>
-          <p>Esqueceu sua senha?</p>
-        </div>
-        <div class="container__form__cadastro">
-          <router-link class="container__form__cadastro__link" to="/cadastro"
-            >Criar nova conta</router-link
-          >
-        </div>
-      </form>
+    <div class="container__section">
+      <div class="container__section__form">
+        <form @submit="submit">
+          <div class="container__section__form__input">
+            <input
+              type="email"
+              placeholder="Email ou telefone"
+              v-model="email"
+            />
+          </div>
+          <div class="container__section__form__input">
+            <input type="password" placeholder="Senha" v-model="password" />
+          </div>
+          <div class="container__section__form__button">
+            <button>Entrar</button>
+            <p>Esqueceu sua senha?</p>
+          </div>
+          <div class="container__section__form__cadastro">
+            <button
+              class="container__section__form__cadastro__link"
+              @click="playButton()"
+            >
+              Criar nova conta
+            </button>
+          </div>
+        </form>
+      </div>
+      <p class="container__section__p">
+        <strong>Criar uma página</strong>
+        para uma celebridade, banda ou empresa
+      </p>
     </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import ModalCadastro from "@/components/ModalCadastro";
+
 export default {
   data() {
     return {
       email: "",
       password: "",
+      modal: false,
     };
+  },
+  components: {
+    ModalCadastro,
   },
   methods: {
     async submit(e) {
@@ -83,6 +108,12 @@ export default {
       } else {
         this.$router.push({ name: "Timeline" });
       }
+    },
+    playButton() {
+      this.modal = true;
+    },
+    hideModal() {
+      this.modal = false;
     },
   },
 };
@@ -103,6 +134,10 @@ export default {
     justify-content: center;
     flex-direction: column;
     background: #f0f2f5;
+    padding-right: 60px;
+    &__img {
+      margin-left: -20px;
+    }
 
     img {
       width: 200px;
@@ -166,75 +201,90 @@ export default {
       }
     }
   }
-  &__form {
-    width: 396px;
-    height: 350px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #fff;
-    border: none;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
-    box-sizing: border-box;
-    margin: 40px 0 0;
-    padding: 20px 0 28px;
-    &__input {
-      padding: 6px 0;
-      input {
-        font-size: 17px;
-        padding: 14px 16px;
-        width: 330px;
-        border-radius: 6px;
-        border: 1px solid #dbdbdb;
+  &__section {
+    &__form {
+      width: 396px;
+      height: 350px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #fff;
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+      box-sizing: border-box;
+      margin: 40px 0 0;
+      padding-bottom: 10px;
+      &__input {
+        padding: 6px 0;
+        input {
+          font-size: 17px;
+          padding: 14px 16px;
+          width: 330px;
+          border-radius: 6px;
+          border: 1px solid #dbdbdb;
+        }
+      }
+      &__button {
+        text-align: center;
+        padding-top: 6px;
+        border-bottom: 1px solid #dbdbdb;
+        margin-bottom: 20px;
+        button {
+          background-color: #1877f2;
+          border: none;
+          border-radius: 6px;
+          font-size: 20px;
+          font-weight: 600;
+          color: #ffffff;
+          line-height: 48px;
+          padding: 0 16px;
+          margin-bottom: 16px;
+          width: 360px;
+          cursor: pointer;
+          outline: 0;
+        }
+        p {
+          color: #1877f2;
+          font-size: 14px;
+          font-weight: 500;
+          font-family: Helvetica, Arial, sans-serif;
+          cursor: pointer;
+          margin-bottom: 20px;
+          text-decoration: none;
+        }
+      }
+      &__cadastro {
+        text-align: center;
+        &__link {
+          width: 170px;
+          border: none;
+          border-radius: 6px;
+          font-size: 17px;
+          font-weight: 600;
+          font-family: Helvetica, Arial, sans-serif;
+          color: #ffffff;
+          line-height: 48px;
+          padding: 0 16px;
+          cursor: pointer;
+          display: inline-block;
+          text-decoration: none;
+          background-color: #42b72a;
+        }
       }
     }
-    &__button {
-      text-align: center;
-      padding-top: 6px;
-      border-bottom: 1px solid #dbdbdb;
-      margin-bottom: 20px;
-      button {
-        background-color: #1877f2;
-        border: none;
-        border-radius: 6px;
-        font-size: 20px;
-        font-weight: 600;
-        color: #ffffff;
-        line-height: 48px;
-        padding: 0 16px;
-        margin-bottom: 16px;
-        width: 360px;
-        cursor: pointer;
-        outline: 0;
-      }
-      p {
-        color: #1877f2;
-        font-size: 14px;
-        font-weight: 500;
-        font-family: Helvetica, Arial, sans-serif;
-        cursor: pointer;
-        margin-bottom: 16px;
-        text-decoration: none;
-      }
+    strong {
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 600;
     }
-    &__cadastro {
+    &__p {
       text-align: center;
-      &__link {
-        width: 150px;
-        border: none;
-        border-radius: 6px;
-        font-size: 17px;
-        font-weight: 600;
-        font-family: Helvetica, Arial, sans-serif;
-        color: #ffffff;
-        line-height: 48px;
-        padding: 0 16px;
-        cursor: pointer;
-        display: inline-block;
-        text-decoration: none;
-        background-color: #42b72a;
-      }
+      color: #1c1e21;
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      font-weight: normal;
+      margin-top: 28px;
     }
   }
 }

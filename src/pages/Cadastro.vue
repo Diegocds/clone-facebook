@@ -3,12 +3,25 @@
     <form @submit="uploadUser">
       <input type="text" placeholder="Digite seu nome" v-model="name" />
       <input type="E-mail" placeholder="Digite seu email" v-model="email" />
-      <input type="date" placeholder="Digite data de nascimento" v-model="date" />
-      <input type="password" placeholder="Digite sua senha" v-model="password" />
-      <input type="password" placeholder="Confirme sua senha" v-model="confirmPassword" />
-      <button>Cadastrar</button>
+      <input
+        type="date"
+        placeholder="Digite data de nascimento"
+        v-model="date"
+      />
+      <input
+        type="password"
+        placeholder="Digite sua senha"
+        v-model="password"
+      />
+      <input
+        type="password"
+        placeholder="Confirme sua senha"
+        v-model="confirmPassword"
+      />
+      <div>
+        <router-link to="/">Cadastre-se</router-link>
+      </div>
     </form>
-    <router-link to="/">Voltar</router-link>
   </div>
 </template>
 
