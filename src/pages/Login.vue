@@ -9,27 +9,51 @@
         Logins recentes
       </h2>
       <p>Clique na foto ou adicione uma conta.</p>
-      <div class="cards">
-        <div class="card-1">Foto Diego</div>
-        <div class="card-1">Adicionar conta</div>
+      <div class="container__logo__cards">
+        <div class="container__logo__cards__card-1">
+          <div class="container__logo__cards__card-1__png">
+            <img
+              src="https://scontent.fcgh10-1.fna.fbcdn.net/v/t1.6435-1/p160x160/139586898_1135014206932175_3632579027837851001_n.jpg?_nc_cat=106&ccb=1-3&_nc_sid=dbb9e7&_nc_ohc=UCXmOAIRHbkAX_OUVel&_nc_ht=scontent.fcgh10-1.fna&tp=6&oh=08444cef52a5d4701f8bf41b164bbbed&oe=60939CC5"
+              alt=""
+            />
+          </div>
+          <div class="container__logo__cards__card-1__name">
+            <span>Diego</span>
+          </div>
+        </div>
+        <div class="container__logo__cards__card-1">
+          <div class="container__logo__cards__card-1__png">
+            <img
+              class="container__logo__cards__card-1__png__img"
+              src="@/assets/add_circle_black_36dp.svg"
+              alt=""
+            />
+          </div>
+          <div class="container__logo__cards__card-1__name">
+            <span class="container__logo__cards__card-1__name__span"
+              >Adicionar conta</span
+            >
+          </div>
+        </div>
       </div>
     </div>
     <div class="container__form">
       <form @submit="submit">
-        <div>
-          <input type="email" placeholder="Digite seu email" v-model="email" />
+        <div class="container__form__input">
+          <input type="email" placeholder="Email ou telefone" v-model="email" />
         </div>
-        <div>
-          <input
-            type="password"
-            placeholder="Digite sua senha"
-            v-model="password"
-          />
+        <div class="container__form__input">
+          <input type="password" placeholder="Senha" v-model="password" />
         </div>
-        <div>
+        <div class="container__form__button">
           <button>Entrar</button>
+          <p>Esqueceu sua senha?</p>
         </div>
-        <router-link to="/cadastro">Criar nova conta</router-link>
+        <div class="container__form__cadastro">
+          <router-link class="container__form__cadastro__link" to="/cadastro"
+            >Criar nova conta</router-link
+          >
+        </div>
       </form>
     </div>
   </div>
@@ -71,11 +95,15 @@ export default {
   align-items: center;
   width: 100%;
   height: 100%;
+  background: #f0f2f5;
   &__logo {
-    width: 50%;
+    width: 500px;
+    height: 630px;
     display: flex;
     justify-content: center;
     flex-direction: column;
+    background: #f0f2f5;
+
     img {
       width: 200px;
       height: 70px;
@@ -93,11 +121,121 @@ export default {
       line-height: 24px;
       margin-bottom: 12px;
     }
+    &__cards {
+      width: 350px;
+      height: 300px;
+      display: flex;
+      justify-content: space-between;
+      text-align: center;
+      background: #f0f2f5;
+
+      &__card-1 {
+        height: auto;
+        width: 160px;
+        height: 210px;
+        margin-top: 10px;
+        background: #f5f6f7;
+        border: 1px solid #dbdbdb;
+        border-radius: 10px;
+        &__name {
+          background: #ffffff;
+          height: 36px;
+          border-bottom-left-radius: 10px;
+          border-bottom-right-radius: 10px;
+          padding-top: 8px;
+
+          span {
+            font-size: 18px;
+            line-height: 22px;
+            font-family: Helvetica, Arial, sans-serif;
+          }
+          &__span {
+            color: #1877f2;
+          }
+        }
+        &__png {
+          width: 150px;
+          height: auto;
+          img {
+            width: 160px;
+            height: 100%;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+          }
+        }
+      }
+    }
   }
   &__form {
-    width: 50%;
+    width: 396px;
+    height: 350px;
     display: flex;
     justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%), 0 8px 16px rgb(0 0 0 / 10%);
+    box-sizing: border-box;
+    margin: 40px 0 0;
+    padding: 20px 0 28px;
+    &__input {
+      padding: 6px 0;
+      input {
+        font-size: 17px;
+        padding: 14px 16px;
+        width: 330px;
+        border-radius: 6px;
+        border: 1px solid #dbdbdb;
+      }
+    }
+    &__button {
+      text-align: center;
+      padding-top: 6px;
+      border-bottom: 1px solid #dbdbdb;
+      margin-bottom: 20px;
+      button {
+        background-color: #1877f2;
+        border: none;
+        border-radius: 6px;
+        font-size: 20px;
+        font-weight: 600;
+        color: #ffffff;
+        line-height: 48px;
+        padding: 0 16px;
+        margin-bottom: 16px;
+        width: 360px;
+        cursor: pointer;
+        outline: 0;
+      }
+      p {
+        color: #1877f2;
+        font-size: 14px;
+        font-weight: 500;
+        font-family: Helvetica, Arial, sans-serif;
+        cursor: pointer;
+        margin-bottom: 16px;
+        text-decoration: none;
+      }
+    }
+    &__cadastro {
+      text-align: center;
+      &__link {
+        width: 150px;
+        border: none;
+        border-radius: 6px;
+        font-size: 17px;
+        font-weight: 600;
+        font-family: Helvetica, Arial, sans-serif;
+        color: #ffffff;
+        line-height: 48px;
+        padding: 0 16px;
+        cursor: pointer;
+        display: inline-block;
+        text-decoration: none;
+        background-color: #42b72a;
+      }
+    }
   }
 }
 </style>
