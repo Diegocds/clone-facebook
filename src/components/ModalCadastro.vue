@@ -26,7 +26,7 @@
               </div>
               <input
                 class="input-email"
-                type="text"
+                type="email"
                 placeholder="Celular ou email"
                 v-model="email"
               />
@@ -41,19 +41,19 @@
                 <input
                   type="number"
                   placeholder="Dia"
-                  v-model="date"
+                  v-model="day"
                   class="input-number"
                 />
                 <input
                   type="number"
                   placeholder="Mês"
-                  v-model="date"
+                  v-model="month"
                   class="input-number"
                 />
                 <input
                   type="number"
                   placeholder="Ano"
-                  v-model="date"
+                  v-model="year"
                   class="input-number"
                 />
               </div>
@@ -79,7 +79,7 @@
                 notificações por SMS e cancelar isso quando quiser.
               </p>
               <div class="cadastro">
-                <router-link class="link" to="/">Cadastre-se</router-link>
+                <button class="link">Cadastre-se</button>
               </div>
             </form>
           </div>
@@ -91,11 +91,39 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
+  data() {
+    return {
+      name: "",
+      lastName: "",
+      email: "",
+      password: "",
+      day: "",
+      month: "",
+      year: "",
+    };
+  },
   props: {
     playButton: Function,
     hideModal: Function,
     modal: Boolean,
+  },
+  methods: {
+    async uploadUser(e) {
+      e.preventDefault();
+
+      await axios.post("http://localhost:3000/users", {
+        name: this.name,
+        lastName: this.lastName,
+        email: this.email,
+        password: this.password,
+        day: this.day,
+        month: this.month,
+        year: this.year,
+      });
+      this.$router.push({ name: "Login" });
+    },
   },
 };
 </script>

@@ -61,12 +61,12 @@
             <p>Esqueceu sua senha?</p>
           </div>
           <div class="container__section__form__cadastro">
-            <button
+            <a
               class="container__section__form__cadastro__link"
               @click="playButton()"
             >
               Criar nova conta
-            </button>
+            </a>
           </div>
         </form>
       </div>
@@ -103,8 +103,10 @@ export default {
           password: this.password,
         },
       });
-      if (data.lenght === 0) {
+      if (data.length === 0) {
         alert("Usuário ou senha incorretos");
+        this.email = "";
+        this.password = "";
       } else {
         this.$router.push({ name: "Timeline" });
       }

@@ -19,7 +19,7 @@ const routes = [
   },
 
   {
-    path: '/Timeline',
+    path: '/timeline',
     name: 'Timeline',
     component: Timeline
   },
