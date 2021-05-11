@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form @submit="uploadUser">
+    <form @submit.prevent="uploadUser">
       <input type="text" placeholder="Digite seu nome" v-model="name" />
       <input type="E-mail" placeholder="Digite seu email" v-model="email" />
       <input

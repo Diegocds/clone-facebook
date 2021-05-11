@@ -15,6 +15,16 @@
       "id": 2
     },
     {
+      "name": "Teste",
+      "lastName": "teste",
+      "email": "teste@teste.com.br",
+      "password": "123",
+      "day": "1",
+      "month": "1",
+      "year": "1998",
+      "id": 5
+    },
+    {
       "name": "Diego",
       "lastName": "Carlos",
       "email": "diegocds1990@gmail.com",
@@ -22,8 +32,13 @@
       "day": "19",
       "month": "02",
       "year": "1990",
-      "id": 3
+      "id": 6
     }
   ],
-  "posts": []
+  "posts": [
+    {
+      "post": "Cuide de você... Se você for uma pessoa melhor para você, você será uma pessoa melhor para qualquer um.",
+      "id": 1
+    }
+  ]
 }

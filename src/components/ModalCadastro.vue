@@ -112,17 +112,27 @@ export default {
   methods: {
     async uploadUser(e) {
       e.preventDefault();
-
-      await axios.post("http://localhost:3000/users", {
-        name: this.name,
-        lastName: this.lastName,
-        email: this.email,
-        password: this.password,
-        day: this.day,
-        month: this.month,
-        year: this.year,
-      });
-      this.$router.push({ name: "Login" });
+      if( this.name === '' ||
+          this.lastName === '' ||
+          this.email === '' ||
+          this.password === '' ||
+          this.day === '' ||
+          this.month === '' ||
+          this.year === '') {
+           alert('Preencha todos os campos')
+         } else {
+           await axios.post("http://localhost:3000/users", {
+             name: this.name,
+             lastName: this.lastName,
+             email: this.email,
+             password: this.password,
+             day: this.day,
+             month: this.month,
+             year: this.year,
+           });
+          //  this.$router.push({ name: "Login" });
+          this.hideModal()
+         }
     },
   },
 };

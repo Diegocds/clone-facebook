@@ -1,41 +1,61 @@
 <template>
-  <div>
-    <form @submit="post">
-      <textarea
-        type="text"
-        placeholder="No que vc está pensando?"
-        v-model="post"
-      ></textarea>
-      <button>Postar</button>
-    </form>
-    <ul>
-      <li v-for="post in posts" :key="post.id">{{ post.post }}</li>
-    </ul>
+  <div class="container">
+    <Header />
+    <div class="container__content">
+      <div class="container__content__functions">
+        <Functions />
+      </div>
+      <div class="container__content__posts">
+        <Posts />
+      </div>
+      <div class="container__content__pearsons">
+        <Pearsons />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import axios from "axios";
+import Header from "@/components/Header";
+import Posts from "@/components/Posts";
+import Functions from "@/components/Functions";
+import Pearsons from "@/components/Pearsons";
 export default {
   data() {
-    return {
-      post: "",
-      posts: [],
-    };
+    return {};
   },
-  // mounted() {
-  //this.post();
-  // },
-  methods: {
-    async post(e) {
-      e.preventDefault();
-      await axios.post("http://localhost:3000/posts", {
-        post: this.post,
-        // id: Math.Floor(Math.random() * 100)
-      });
-      this.post = "";
-      //this.post();
-    },
+  components: {
+    Header,
+    Posts,
+    Pearsons,
+    Functions,
   },
 };
 </script>
+<style lang="scss" scoped>
+.container {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  height: auto;
+  background: #F0F2F5;
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    &__functions{
+            width: 302px;
+
+      background: blue;
+    }
+     &__posts{
+      width: 742px;
+      max-width: 742px;
+      background: rosybrown;
+    }
+     &__pearsons{
+      width: 302px;
+      background: red;
+    }
+  }
+}
+</style>
