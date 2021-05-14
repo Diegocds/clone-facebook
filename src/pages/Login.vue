@@ -19,7 +19,7 @@
         <div class="container__logo__cards__card-1">
           <div class="container__logo__cards__card-1__png">
             <img
-              src="https://scontent.fcgh10-1.fna.fbcdn.net/v/t1.6435-1/p160x160/139586898_1135014206932175_3632579027837851001_n.jpg?_nc_cat=106&ccb=1-3&_nc_sid=dbb9e7&_nc_ohc=UCXmOAIRHbkAX_OUVel&_nc_ht=scontent.fcgh10-1.fna&tp=6&oh=08444cef52a5d4701f8bf41b164bbbed&oe=60939CC5"
+              src="@/assets/diego.jpg"
               alt=""
             />
           </div>
